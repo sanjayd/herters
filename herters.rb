@@ -12,5 +12,7 @@ prices = sales.map do |sale|
   row.css('td')[0 .. 4].map {|td| td.text} << sale.css('dd.saleprice').text
 end
 
-hash = {:prices => prices, :updated => `date`.strip}
+promo = doc.css('#cq5DefaultHeader .utilityImage img').attr('src').value
+
+hash = {:prices => prices, :updated => `date`.strip, :promo => promo}
 File.open(SALES, 'w') {|f| f.puts hash.to_json}

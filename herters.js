@@ -5,6 +5,7 @@
     .controller('HertersCtrl', ['$scope', 'SalesService', function($scope, SalesService) {
       SalesService.get(function(sales) {
         $scope.sales = sales.prices;
+        $scope.promo = sales.promo;
         $scope.updated = moment(sales.updated).fromNow();
       });
     }])
